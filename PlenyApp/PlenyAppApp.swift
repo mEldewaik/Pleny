@@ -8,10 +8,27 @@
 import SwiftUI
 
 @main
-struct PlenyAppApp: App {
+struct PlenyApp: App {
+    @StateObject private var coordinator: AppCoordinator
+
+    init() {
+        // Setup Use Cases
+        let authRepo = AuthRepositoryImpl()
+        let postsRepo = PostsRepositoryImpl()
+
+        let loginUseCase = LoginUseCase(repository: authRepo)
+        let postsUseCase = FetchPostsUseCase(repository: postsRepo)
+
+        _coordinator = StateObject(wrappedValue: AppCoordinator(
+            loginUseCase: loginUseCase,
+            postsUseCase: postsUseCase
+        ))
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            coordinator.start()
         }
     }
 }
+
