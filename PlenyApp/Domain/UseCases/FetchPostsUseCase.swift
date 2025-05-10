@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class FetchPostsUseCase {
+final class FetchPostsUseCase: FetchPostsUseCaseType {
     private let repository: PostsRepository
 
     init(repository: PostsRepository) {

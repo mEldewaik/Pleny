@@ -20,10 +20,10 @@ final class LoginViewModel: ObservableObject {
     @Published var isLoginSuccessful: Bool = false
 
 
-    private let loginUseCase: LoginUseCase
+    private let loginUseCase: LoginUseCaseType
     private var cancellables = Set<AnyCancellable>()
 
-    init(loginUseCase: LoginUseCase) {
+    init(loginUseCase: LoginUseCaseType) {
         self.loginUseCase = loginUseCase
         
         // Validate input and update `isFormValid`

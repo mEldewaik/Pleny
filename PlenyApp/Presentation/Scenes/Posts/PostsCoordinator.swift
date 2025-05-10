@@ -16,9 +16,10 @@ final class PostsCoordinator {
         self.searchUseCase = searchUseCase
     }
 
-    func makeView() -> some View {
+    func makeView(onSearchTap: @escaping () -> Void) -> some View {
         let viewModel = PostsViewModel(fetchUseCase: useCase, searchUseCase: searchUseCase)
-        return PostsView(viewModel: viewModel)
+        return PostsView(viewModel: viewModel, onSearchTap: onSearchTap)
     }
 }
+
 

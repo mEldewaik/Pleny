@@ -12,17 +12,20 @@ struct PlenyApp: App {
     @StateObject private var coordinator: AppCoordinator
 
     init() {
-        // Setup Use Cases
         let authRepo = AuthRepositoryImpl()
         let postsRepo = PostsRepositoryImpl()
 
         let loginUseCase = LoginUseCase(repository: authRepo)
-        let postsUseCase = FetchPostsUseCase(repository: postsRepo)
+        let fetchPostsUseCase = FetchPostsUseCase(repository: postsRepo)
+        let searchPostsUseCase = SearchPostsUseCase(repository: postsRepo)
 
-        _coordinator = StateObject(wrappedValue: AppCoordinator(
-            loginUseCase: loginUseCase,
-            postsUseCase: postsUseCase
-        ))
+        _coordinator = StateObject(wrappedValue:
+            AppCoordinator(
+                loginUseCase: loginUseCase,
+                postsUseCase: fetchPostsUseCase,
+                searchUseCase: searchPostsUseCase
+            )
+        )
     }
 
     var body: some Scene {
@@ -31,4 +34,5 @@ struct PlenyApp: App {
         }
     }
 }
+
 

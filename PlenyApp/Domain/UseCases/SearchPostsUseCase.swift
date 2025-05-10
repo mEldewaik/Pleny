@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class SearchPostsUseCase {
+final class SearchPostsUseCase: SearchPostsUseCaseType {
     private let repository: PostsRepository
 
     init(repository: PostsRepository) {

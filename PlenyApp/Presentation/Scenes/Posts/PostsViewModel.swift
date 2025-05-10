@@ -14,15 +14,15 @@ final class PostsViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     @Published var hasMorePages: Bool = true
 
-    private let fetchPostsUseCase: FetchPostsUseCase
-    private let searchPostsUseCase: SearchPostsUseCase
+    private let fetchPostsUseCase: FetchPostsUseCaseType
+    private let searchPostsUseCase: SearchPostsUseCaseType
     private var cancellables = Set<AnyCancellable>()
 
     private var currentPage = 0
     private let pageSize = 20
     private var isSearching = false
 
-    init(fetchUseCase: FetchPostsUseCase, searchUseCase: SearchPostsUseCase) {
+    init(fetchUseCase: FetchPostsUseCaseType, searchUseCase: SearchPostsUseCaseType) {
         self.fetchPostsUseCase = fetchUseCase
         self.searchPostsUseCase = searchUseCase
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post: Identifiable {
+struct Post: Identifiable, Equatable {
     let id: Int
     let title: String
     let body: String
@@ -17,4 +17,30 @@ struct Post: Identifiable {
     let views: Int
     let userId: Int
 }
+
+extension Post {
+    static func mock(
+        id: Int = 1,
+        title: String = "Test Title",
+        body: String = "Test Body with keyword",
+        tags: [String] = ["test", "mock"],
+        likes: Int = 123,
+        dislikes: Int = 4,
+        views: Int = 999,
+        userId: Int = 42
+    ) -> Post {
+        return Post(
+            id: id,
+            title: title,
+            body: body,
+            tags: tags,
+            likes: likes,
+            dislikes: dislikes,
+            views: views,
+            userId: userId
+        )
+    }
+}
+
+
 

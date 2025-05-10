@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class LoginUseCase {
+final class LoginUseCase: LoginUseCaseType {
     private let repository: AuthRepository
 
     init(repository: AuthRepository) {

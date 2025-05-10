@@ -9,11 +9,11 @@ import SwiftUI
 import Combine
 
 final class LoginCoordinator {
-    private let loginUseCase: LoginUseCase
+    private let loginUseCase: LoginUseCaseType
     private let onLoginSuccess: () -> Void
     private var cancellables = Set<AnyCancellable>()
 
-    init(loginUseCase: LoginUseCase, onLoginSuccess: @escaping () -> Void) {
+    init(loginUseCase: LoginUseCaseType, onLoginSuccess: @escaping () -> Void) {
         self.loginUseCase = loginUseCase
         self.onLoginSuccess = onLoginSuccess
     }

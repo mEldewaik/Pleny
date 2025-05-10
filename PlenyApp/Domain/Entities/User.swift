@@ -18,3 +18,19 @@ struct User: Identifiable {
     let refreshToken: String
 }
 
+extension User {
+    static func mock() -> User {
+        return User(
+            id: 1,
+            username: "testuser",
+            email: "test@pleny.com",
+            firstName: "Test",
+            lastName: "User",
+            image: "",
+            accessToken: "abc123",
+            refreshToken: "refresh123"
+        )
+    }
+}
+
+
