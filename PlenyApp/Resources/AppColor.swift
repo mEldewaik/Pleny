@@ -9,6 +9,7 @@ import SwiftUI
 
 enum AppColor {
     static let primary = Color("PrimaryColor")
+    static let grey200 = Color("Grey200")
     static let grey300 = Color("Grey300")
     static let grey600 = Color("Grey600")
     static let grey700 = Color("Grey700")

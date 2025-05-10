@@ -52,7 +52,13 @@ final class APIClient {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpShouldHandleCookies = true
 
+        if let accessToken = UserSessionManager.shared.accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
+
+        
         return URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { result in
                 guard let httpResponse = result.response as? HTTPURLResponse else {

@@ -21,9 +21,17 @@ final class AppCoordinator: ObservableObject {
 
     @ViewBuilder
     func start() -> some View {
-        LoginCoordinator(loginUseCase: loginUseCase, onLoginSuccess: {
-            self.isAuthenticated = true
-        }).makeView()
+        if isAuthenticated {
+            PostsCoordinator(
+                useCase: postsUseCase,
+                searchUseCase: SearchPostsUseCase(repository: PostsRepositoryImpl())
+            ).makeView()
+        } else {
+            LoginCoordinator(loginUseCase: loginUseCase, onLoginSuccess: {
+                self.isAuthenticated = true
+            }).makeView()
+        }
     }
+
 }
 
